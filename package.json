@@ -1,6 +1,6 @@
 {
   "name": "connection",
-  "description": "",
+  "description": "Get your computers network speed 🚀",
   "version": "1.0.1",
   "license": "MIT",
   "scripts": {
