@@ -20,13 +20,19 @@ class Page extends Document {
         <style jsx global>{`
           @import url(https://mcan.sh/assets/fonts/Gotham/gotham.css);
           * {
-            margin: 0;
             box-sizing: border-box;
             font-weight: 300;
           }
           body {
             min-height: 100vh;
             font-family: 'Gotham Pro';
+            background: #222;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.35;
+            text-align: center;
           }
         `}</style>
         <body>

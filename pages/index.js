@@ -54,9 +54,27 @@ class Index extends React.Component {
     return (
       <div>
         <h1>{this.state.connectionSentence}</h1>
-        <p>{this.state.bandwidthSentence}</p>
-        <p>{this.state.rttSentence}</p>
-        <p>{this.state.error}</p>
+        <h2>{this.state.bandwidthSentence}</h2>
+        <h3>{this.state.rttSentence}</h3>
+        <h1>{this.state.error}</h1>
+
+        <style jsx>{`
+          h3 {
+            font-size: 1.3rem;
+          }
+
+          @media (min-width: 600px) {
+            h1 {
+              font-size: 2.5rem;
+            }
+            h2 {
+              font-size: 2rem;
+            }
+            h3 {
+              font-size: 1.5rem;
+            }
+          }
+        `}</style>
       </div>
     );
   }
