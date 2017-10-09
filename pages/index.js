@@ -24,11 +24,6 @@ class Index extends React.Component {
 
         const { type, downlink, rtt } = network;
 
-        console.log(
-          `MDN says navigator.connection.downlink is in mbps but it looks like its closer to MBps? Take a speedtest and compare and lemme know. I got ${downlink}, where in mbps thats ${downlink *
-            8}`,
-        );
-
         const connections = [
           { type: 'wifi', name: 'WiFi' },
           { type: 'bluetooth', name: 'Bluetooth' },
@@ -47,6 +42,10 @@ class Index extends React.Component {
           connectionSentence = 'You are not connected to the internet';
         } else {
           connectionSentence = `You are connected via ${connection.name}`;
+          console.log(
+            `MDN says navigator.connection.downlink is in mbps but it looks like its closer to MBps? Take a speedtest and compare and lemme know. I got ${downlink}, where in mbps thats ${downlink *
+              8}`,
+          );
         }
 
         const bandwidthSentence =
