@@ -72,25 +72,6 @@ class Page extends Document {
             content="Get your computers network speed 🚀"
           />
         </Head>
-        <style jsx global>{`
-          @import url('https://mcan.sh/assets/fonts/Gotham/gotham.css');
-          * {
-            box-sizing: border-box;
-            font-weight: 300;
-          }
-          body {
-            min-height: 100vh;
-            font-family: 'Gotham Pro';
-            background: #222;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            line-height: 1.35;
-            text-align: center;
-            margin: 0;
-          }
-        `}</style>
         <body>
           <Main />
           <NextScript />
