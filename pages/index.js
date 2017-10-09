@@ -13,12 +13,7 @@ class Index extends React.Component {
   }
 
   componentDidMount() {
-    if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-      navigator.serviceWorker
-        .register('/sw.js')
-        .then(console.log('service worker registration successful'))
-        .catch(err => console.warn(err));
-    }
+    this.serviceWorker();
     const updateConnectionInfo = () => {
       if ('connection' in navigator) {
         const network = navigator.connection;
@@ -61,6 +56,15 @@ class Index extends React.Component {
     };
 
     updateConnectionInfo();
+  }
+
+  serviceWorker() {
+    if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('/sw.js')
+        .then(console.log('service worker registration successful'))
+        .catch(err => console.warn(err));
+    }
   }
 
   render() {
