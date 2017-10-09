@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 class Index extends React.Component {
   constructor() {
@@ -69,8 +70,24 @@ class Index extends React.Component {
         <h2>{this.state.bandwidthSentence}</h2>
         <h3>{this.state.rttSentence}</h3>
         <h1>{this.state.error}</h1>
+        <Link href="https://github.com/mcansh/connection">
+          <a target="_blank">src</a>
+        </Link>
 
         <style jsx>{`
+          a {
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.4);
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+          }
+
+          a:hover,
+          a:focus {
+            text-decoration: underline;
+          }
+
           h3 {
             font-size: 1.3rem;
           }
