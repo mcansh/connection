@@ -73,7 +73,7 @@ class Page extends Document {
           />
         </Head>
         <style jsx global>{`
-          @import url(https://mcan.sh/assets/fonts/Gotham/gotham.css);
+          @import url('https://mcan.sh/assets/fonts/Gotham/gotham.css');
           * {
             box-sizing: border-box;
             font-weight: 300;
@@ -88,6 +88,7 @@ class Page extends Document {
             align-items: center;
             line-height: 1.35;
             text-align: center;
+            margin: 0;
           }
         `}</style>
         <body>
