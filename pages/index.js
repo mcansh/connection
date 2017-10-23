@@ -68,12 +68,18 @@ class Index extends React.Component {
   }
 
   render() {
+    const {
+      connectionSentence,
+      bandwidthSentence,
+      rttSentence,
+      error,
+    } = this.state;
     return (
       <div>
-        <h1>{this.state.connectionSentence}</h1>
-        <h2>{this.state.bandwidthSentence}</h2>
-        <h3>{this.state.rttSentence}</h3>
-        <h1>{this.state.error}</h1>
+        {connectionSentence ? <h1>{connectionSentence}</h1> : ''}
+        {bandwidthSentence ? <h2>{bandwidthSentence}</h2> : ''}
+        {rttSentence ? <h3>{this.state.rttSentence}</h3> : ''}
+        {error ? <h1>{this.state.error}</h1> : ''}
         <Link href="https://github.com/mcansh/connection">
           <a target="_blank">src</a>
         </Link>
