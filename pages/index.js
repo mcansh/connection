@@ -91,11 +91,10 @@ class Index extends React.Component {
             position: absolute;
             bottom: 20px;
             right: 20px;
-          }
-
-          a:hover,
-          a:focus {
-            text-decoration: underline;
+            &:hover,
+            &:focus {
+              text-decoration: underline;
+            }
           }
 
           h3 {
