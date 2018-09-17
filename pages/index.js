@@ -18,8 +18,6 @@ class Index extends Component {
     { type: 'cellular', name: 'Cellular' },
     { type: 'wimax', name: 'WiMAX' },
     { type: 'ethernet', name: 'Ethernet' },
-    { type: 'other', name: 'magic' },
-    { type: 'offline', name: 'offline' },
     { type: 'slow-2g', name: '2G' },
     { type: '2g', name: '2G' },
     { type: '3g', name: '3G' },
@@ -54,9 +52,17 @@ class Index extends Component {
 
     const { downlink, rtt, effectiveType } = connection;
 
-    const connectionType = this.effectiveTypes.find(
-      ({ type }) => type === effectiveType.toLowerCase()
-    );
+    let connectionType;
+
+    if (downlink > 0 && rtt > 0) {
+      connectionType = this.effectiveTypes.find(
+        ({ type }) => type === effectiveType.toLowerCase()
+      );
+    } else if (downlink === 0 || rtt === 0) {
+      connectionType = 'offline';
+    } else {
+      connectionType = 'unknown';
+    }
 
     this.setState({
       bandwidth: downlink,

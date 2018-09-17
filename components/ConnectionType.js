@@ -13,6 +13,7 @@ const ConnectionType = ({ connection }) => {
         <FormattedMessage
           id="connectionType.unknown"
           defaultMessage="I have no idea how you're online"
+          tagName={H1}
         />
       );
     case 'none':
@@ -20,6 +21,7 @@ const ConnectionType = ({ connection }) => {
         <FormattedMessage
           id="connectionType.offline"
           defaultMessage="You are not connected to the internet"
+          tagName={H1}
         />
       );
     default:
