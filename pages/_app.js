@@ -6,7 +6,7 @@ import { IntlProvider, addLocaleData } from 'react-intl';
 import { StyledLink } from '../components/Type';
 
 const ExtendedStyledLink = styled(StyledLink)`
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   padding: 2rem;
