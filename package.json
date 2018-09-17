@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node server.js",
+    "lang": "node lib/default-lang",
+    "export": "next export",
+    "postbuild": "yarn lang && yarn export"
   },
   "author": "Logan McAnsh <logan@mcan.sh> (https://mcan.sh)",
   "dependencies": {

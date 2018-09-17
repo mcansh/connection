@@ -1,0 +1,8 @@
+{
+  "bandwidth": "Your bandwidth is {bandwidth} Mbps",
+  "connectionType.unknown": "I have no idea how you're online",
+  "connectionType.offline": "You are not connected to the internet",
+  "connectionType.normal": "According to {link}, you are connected via {connection}",
+  "browser": "your browser",
+  "rtt": "Your ping is {rtt} ms"
+}
