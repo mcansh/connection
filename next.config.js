@@ -2,24 +2,27 @@ const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin');
 const { name } = require('./package.json');
 
 module.exports = {
-  webpack: config => {
-    if (process.env.NODE_ENV === 'production') {
+  webpack: (config, { dev }) => {
+    if (!dev) {
       config.plugins.push(
         new SWPrecacheWebpackPlugin({
           cacheId: name,
           filename: 'sw.js',
           minify: true,
-          staticFileGlobs: [
-            'static/**/*', // Precache all static files by default
-          ],
+          forceDelete: true,
+          staticFileGlobs: ['static/**/*'],
           staticFileGlobsIgnorePatterns: [/\.next\//],
           runtimeCaching: [
             {
+              handler: 'fastest',
+              urlPattern: /[.](webp|png|jpg)/,
+            },
+            {
               handler: 'networkFirst',
-              urlPattern: /^https?.*/,
+              urlPattern: /^http.*/,
             },
           ],
-        }),
+        })
       );
     }
     return config;

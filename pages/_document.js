@@ -1,18 +1,27 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
-import flush from 'styled-jsx/server';
+import { ServerStyleSheet } from 'styled-components';
+import { description } from '../package.json';
+
+const faviconSizes = [32, 57, 72, 96, 120, 128, 144, 152, 195, 228];
 
 class Page extends Document {
   static getInitialProps({ renderPage }) {
-    const { html, head, errorHtml, chunks } = renderPage();
-    const styles = flush();
-    return { html, head, errorHtml, chunks, styles };
+    const sheet = new ServerStyleSheet();
+    const page = renderPage(App => props =>
+      sheet.collectStyles(<App {...props} />)
+    );
+    const styleTags = sheet.getStyleElement();
+    return { ...page, styleTags };
   }
+
   render() {
+    const { styleTags } = this.props;
     return (
       <html lang="en">
         <Head>
           <title>Connection</title>
+          <meta name="description" content={description} />
           <meta charSet="utf-8" />
           <meta
             name="viewport"
@@ -23,54 +32,14 @@ class Page extends Document {
             href="/static/favicon-32.png"
             sizes="32x32"
           />
-          <link
-            rel="apple-touch-icon-precomposed"
-            sizes="228x228"
-            href="/static/favicon-228.png"
-          />
-          <link
-            rel="apple-touch-icon-precomposed"
-            sizes="195x195"
-            href="/static/favicon-195.png"
-          />
-          <link
-            rel="apple-touch-icon-precomposed"
-            sizes="152x152"
-            href="/static/favicon-152.png"
-          />
-          <link
-            rel="apple-touch-icon-precomposed"
-            sizes="144x144"
-            href="/static/favicon-144.png"
-          />
-          <link
-            rel="apple-touch-icon-precomposed"
-            sizes="128x128"
-            href="/static/favicon-128.png"
-          />
-          <link
-            rel="apple-touch-icon-precomposed"
-            sizes="120x120"
-            href="/static/favicon-120.png"
-          />
-          <link
-            rel="apple-touch-icon-precomposed"
-            sizes="96x96"
-            href="/static/favicon-96.png"
-          />
-          <link
-            rel="apple-touch-icon-precomposed"
-            sizes="72x72"
-            href="/static/favicon-72.png"
-          />
-          <link
-            rel="apple-touch-icon-precomposed"
-            href="/static/favicon-57.png"
-          />
-          <meta
-            name="description"
-            content="Get your computers network speed 🚀"
-          />
+          {faviconSizes.map(favicon => (
+            <link
+              rel="apple-touch-icon-precomposed"
+              sizes={`${favicon}x${favicon}`}
+              href={`/static/favicon-${favicon}.png`}
+            />
+          ))}
+          {styleTags}
         </Head>
         <body>
           <Main />
