@@ -3657,7 +3657,7 @@ neo-async@^2.5.0:
   version "2.5.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.5.2.tgz#489105ce7bc54e709d736b195f82135048c50fcc"
 
-next@^7.0.0-canary.19:
+next@7.0.0-canary.19:
   version "7.0.0-canary.19"
   resolved "https://registry.yarnpkg.com/next/-/next-7.0.0-canary.19.tgz#0a59f8435d7428c7eabf5ca91d7d39b5ace54fe1"
   dependencies:
