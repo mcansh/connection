@@ -13,7 +13,7 @@
   },
   "author": "Logan McAnsh <logan@mcan.sh> (https://mcan.sh)",
   "dependencies": {
-    "babel-plugin-react-intl": "3.0.0",
+    "babel-plugin-react-intl": "3.0.1",
     "babel-plugin-styled-components": "1.7.1",
     "glob": "7.1.3",
     "hoist-non-react-statics": "3.0.1",
