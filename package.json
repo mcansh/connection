@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "next start",
     "lang": "node lib/default-lang",
     "export": "next export",
     "postbuild": "yarn lang && yarn export"
