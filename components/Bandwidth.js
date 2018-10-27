@@ -1,9 +1,13 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { H2 } from './Type';
 
-const Bandwidth = ({ bandwidth }) => (
+type Props = {
+  bandwidth: number,
+};
+
+const Bandwidth = ({ bandwidth }: Props) => (
   <H2>
     <FormattedMessage
       id="bandwidth"
@@ -12,9 +16,5 @@ const Bandwidth = ({ bandwidth }) => (
     />
   </H2>
 );
-
-Bandwidth.propTypes = {
-  bandwidth: PropTypes.number.isRequired,
-};
 
 export default Bandwidth;

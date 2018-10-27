@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import dynamic from 'next/dynamic';
 import useConnection from '../lib/useConnection';
@@ -17,9 +18,7 @@ const Index = () => {
   if (typeof window === 'undefined') return null;
   const { error, effectiveType, downlink, rtt } = useConnection();
 
-  console.log({ error, effectiveType, downlink, rtt });
-
-  if (error) {
+  if (error != null) {
     return <H1>{error}</H1>;
   }
 

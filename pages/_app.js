@@ -1,17 +1,8 @@
 import React from 'react';
 import App, { Container } from 'next/app';
-import Link from 'next/link';
-import styled, { createGlobalStyle } from 'styled-components';
 import { IntlProvider, addLocaleData } from 'react-intl';
-import { StyledLink } from '../components/Type';
 
-const ExtendedStyledLink = styled(StyledLink)`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  padding: 2rem;
-  font-size: 1.6rem;
-`;
+import Page from '../components/Page';
 
 // Register React Intl's locale data for the user's locale in the browser. This
 // locale data was added to the page by `pages/_document.js`. This only happens
@@ -22,37 +13,8 @@ if (typeof window !== 'undefined' && window.ReactIntlLocaleData) {
   });
 }
 
-const GlobalStyles = createGlobalStyle`
-  @import url('https://mcan.sh/assets/fonts/Gotham/gotham.css');
-
-  html {
-    box-sizing: border-box;
-    font-size: 10px;
-  }
-
-  *,
-  *::before,
-  *::after {
-    margin: 0;
-    box-sizing: inherit;
-    font-weight: 300;
-  }
-
-  body {
-    min-height: 100vh;
-    font-family: 'Gotham Pro';
-    background: #222;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    line-height: 1.35;
-    text-align: center;
-    margin: 0;
-  }
-`;
-
 class MyApp extends App {
+  // $FlowFixMe
   static getInitialProps = async ({ Component, ctx }) => {
     let pageProps = {};
 
@@ -69,15 +31,18 @@ class MyApp extends App {
   };
 
   componentDidMount = () => {
-    if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-      navigator.serviceWorker
-        .register('/sw.js')
-        .then(() => {
-          console.log('service worker registration successful');
-        })
-        .catch(err => {
-          console.warn('service worker registration failed', err);
-        });
+    if (process.env.NODE_ENV === 'production') {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          // $FlowFixMe
+          .register('/sw.js')
+          .then(() => {
+            console.log('service worker registration successful');
+          })
+          .catch(err => {
+            console.warn('service worker registration failed', err);
+          });
+      }
     }
   };
 
@@ -88,13 +53,9 @@ class MyApp extends App {
     return (
       <Container>
         <IntlProvider locale={locale} messages={messages} initialNow={now}>
-          <>
-            <GlobalStyles />
+          <Page>
             <Component {...pageProps} />
-            <Link href="https://github.com/mcansh/connection" passHref>
-              <ExtendedStyledLink target="_blank">src</ExtendedStyledLink>
-            </Link>
-          </>
+          </Page>
         </IntlProvider>
       </Container>
     );

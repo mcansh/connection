@@ -1,5 +1,5 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { FormattedMessage } from 'react-intl';
 import { H1, StyledLink } from './Type';
@@ -11,7 +11,11 @@ const effectiveTypes = [
   { type: '4g', name: '4G' },
 ];
 
-const ConnectionType = ({ connection }) => {
+type Props = {
+  connection: string,
+};
+
+const ConnectionType = ({ connection }: Props) => {
   switch (connection) {
     case 'unknown':
       return (
@@ -31,7 +35,10 @@ const ConnectionType = ({ connection }) => {
           />
         </H1>
       );
-    default: {
+    case 'slow-2g':
+    case '2g':
+    case '3g':
+    case '4g': {
       const type = effectiveTypes.find(efftype => efftype.type === connection);
       return (
         <H1>
@@ -39,7 +46,7 @@ const ConnectionType = ({ connection }) => {
             id="connectionType.normal"
             defaultMessage="According to {link}, you are connected via {connection}"
             values={{
-              connection: type.name,
+              connection: type ? type.name : 'magic',
               link: (
                 <Link
                   href="https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation"
@@ -58,15 +65,9 @@ const ConnectionType = ({ connection }) => {
         </H1>
       );
     }
+    default:
+      return null;
   }
-};
-
-ConnectionType.propTypes = {
-  connection: PropTypes.string,
-};
-
-ConnectionType.defaultProps = {
-  connection: 'none',
 };
 
 export default ConnectionType;
