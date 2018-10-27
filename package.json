@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "next start",
     "lang": "node lib/default-lang",
     "export": "next export",
     "postbuild": "yarn lang && yarn export"
@@ -19,8 +19,8 @@
     "hoist-non-react-statics": "3.0.1",
     "next": "7.0.0-canary.19",
     "prop-types": "15.6.2",
-    "react": "16.5.1",
-    "react-dom": "16.5.1",
+    "react": "16.7.0-alpha.0",
+    "react-dom": "16.7.0-alpha.0",
     "react-intl": "2.5.0",
     "styled-components": "4.0.2",
     "sw-precache-webpack-plugin": "0.11.5"

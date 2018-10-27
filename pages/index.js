@@ -1,91 +1,35 @@
-import React, { Component } from 'react';
-import ConnectionType from '../components/ConnectionType';
-import Bandwidth from '../components/Bandwidth';
-import RTT from '../components/Rtt';
+import React from 'react';
+import dynamic from 'next/dynamic';
+import useConnection from '../lib/useConnection';
 import { H1 } from '../components/Type';
 
-class Index extends Component {
-  state = {
-    rtt: null,
-    bandwidth: null,
-    connection: null,
-    error: null,
-  };
+const ConnectionType = dynamic({
+  loader: () => import('../components/ConnectionType'),
+});
+const Bandwidth = dynamic({
+  loader: () => import('../components/Bandwidth'),
+});
+const RTT = dynamic({
+  loader: () => import('../components/Rtt'),
+});
 
-  effectiveTypes = [
-    { type: 'wifi', name: 'WiFi' },
-    { type: 'bluetooth', name: 'Bluetooth' },
-    { type: 'cellular', name: 'Cellular' },
-    { type: 'wimax', name: 'WiMAX' },
-    { type: 'ethernet', name: 'Ethernet' },
-    { type: 'slow-2g', name: '2G' },
-    { type: '2g', name: '2G' },
-    { type: '3g', name: '3G' },
-    { type: '4g', name: '4G' },
-  ];
+const Index = () => {
+  if (typeof window === 'undefined') return null;
+  const { error, effectiveType, downlink, rtt } = useConnection();
 
-  componentDidMount = () => {
-    if ('connection' in navigator) {
-      this.updateConnectionInfo();
-      navigator.connection.addEventListener(
-        'change',
-        this.updateConnectionInfo
-      );
-      return null;
-    }
+  console.log({ error, effectiveType, downlink, rtt });
 
-    this.setState({
-      error: "Your browser doesn't support navigator.connection 🙃",
-    });
-    return null;
-  };
-
-  componentWillUnmount = () => {
-    navigator.connection.removeEventListener(
-      'change',
-      this.updateConnectionInfo
-    );
-  };
-
-  updateConnectionInfo = () => {
-    const { connection } = window.navigator;
-
-    const { downlink, rtt, effectiveType } = connection;
-
-    let connectionType;
-
-    if (downlink > 0 && rtt > 0) {
-      connectionType = this.effectiveTypes.find(
-        ({ type }) => type === effectiveType.toLowerCase()
-      );
-    } else if (downlink === 0 || rtt === 0) {
-      connectionType = 'offline';
-    } else {
-      connectionType = 'unknown';
-    }
-
-    this.setState({
-      bandwidth: downlink,
-      rtt,
-      connection: connectionType.name,
-    });
-  };
-
-  render() {
-    const { connection, bandwidth, rtt, error } = this.state;
-
-    if (error) {
-      return <H1>{error}</H1>;
-    }
-
-    return (
-      <>
-        <ConnectionType connection={connection} />
-        <Bandwidth bandwidth={bandwidth} />
-        <RTT rtt={rtt} />
-      </>
-    );
+  if (error) {
+    return <H1>{error}</H1>;
   }
-}
+
+  return (
+    <>
+      <ConnectionType connection={effectiveType} />
+      <Bandwidth bandwidth={downlink} />
+      <RTT rtt={rtt} />
+    </>
+  );
+};
 
 export default Index;
