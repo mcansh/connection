@@ -1,15 +1,6 @@
 module.exports = {
-  presets: ['next/babel'],
-  plugins: [
-    [
-      'styled-components',
-      {
-        ssr: true,
-        displayName: true,
-        preprocess: false,
-      },
-    ],
-  ],
+  presets: ['next/babel', '@babel/preset-flow'],
+  plugins: ['styled-components'],
   env: {
     development: {
       plugins: ['react-intl'],
