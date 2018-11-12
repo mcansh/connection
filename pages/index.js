@@ -1,18 +1,11 @@
 // @flow
 import React from 'react';
-import dynamic from 'next/dynamic';
 import useConnection from '../lib/useConnection';
 import { H1 } from '../components/Type';
 
-const ConnectionType = dynamic({
-  loader: () => import('../components/ConnectionType'),
-});
-const Bandwidth = dynamic({
-  loader: () => import('../components/Bandwidth'),
-});
-const RTT = dynamic({
-  loader: () => import('../components/Rtt'),
-});
+const ConnectionType = React.lazy(() => import('../components/ConnectionType'));
+const Bandwidth = React.lazy(() => import('../components/Bandwidth'));
+const RTT = React.lazy(() => import('../components/Rtt'));
 
 const Index = () => {
   if (typeof window === 'undefined') return null;
@@ -23,11 +16,11 @@ const Index = () => {
   }
 
   return (
-    <>
+    <React.Suspense fallback={<div>LOADING...........</div>} duration={1}>
       <ConnectionType connection={effectiveType} />
       <Bandwidth bandwidth={downlink} />
       <RTT rtt={rtt} />
-    </>
+    </React.Suspense>
   );
 };
 

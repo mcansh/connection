@@ -52,7 +52,12 @@ class MyApp extends App {
 
     return (
       <Container>
-        <IntlProvider locale={locale} messages={messages} initialNow={now}>
+        <IntlProvider
+          locale={locale}
+          messages={messages}
+          initialNow={now}
+          textComponent={React.Fragment}
+        >
           <Page>
             <Component {...pageProps} />
           </Page>

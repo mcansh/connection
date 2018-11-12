@@ -11,12 +11,13 @@
     "export": "next export",
     "postbuild": "yarn lang && yarn export",
     "now-build": "next build && next export -o dist",
-    "deploy": "yarn now-build && cp now.json dist && now dist && now alias"
+    "deploy": "yarn now-build && cp now.json dist && now dist && now alias",
+    "test": "jest"
   },
   "author": "Logan McAnsh <logan@mcan.sh> (https://mcan.sh)",
   "dependencies": {
     "glob": "7.1.3",
-    "hoist-non-react-statics": "3.0.1",
+    "hoist-non-react-statics": "3.1.0",
     "next": "7.0.2",
     "react": "16.7.0-alpha.0",
     "react-dom": "16.7.0-alpha.0",
@@ -25,10 +26,14 @@
     "sw-precache-webpack-plugin": "0.11.5"
   },
   "devDependencies": {
+    "@babel/core": "7.1.2",
     "@babel/preset-flow": "7.0.0",
+    "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
     "babel-plugin-react-intl": "3.0.1",
     "babel-plugin-styled-components": "1.8.0",
+    "babel-jest": "23.6.0",
+    "babel-plugin-transform-dynamic-import": "2.1.0",
     "eslint": "5.8.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-mcansh": "1.0.7",
@@ -40,7 +45,10 @@
     "flow": "0.2.3",
     "flow-bin": "0.85.0",
     "flow-typed": "2.5.1",
+    "jest": "23.6.0",
+    "jest-dom": "2.1.0",
     "prettier": "1.14.3",
-    "prettier-eslint": "8.8.2"
+    "prettier-eslint": "8.8.2",
+    "react-testing-library": "5.2.3"
   }
 }
