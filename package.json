@@ -9,12 +9,12 @@
     "start": "next start",
     "lang": "node lib/default-lang",
     "export": "next export",
-    "postbuild": "yarn lang && yarn export"
+    "postbuild": "yarn lang && yarn export",
+    "now-build": "next build && next export -o dist",
+    "deploy": "yarn now-build && cp now.json dist && now dist && now alias"
   },
   "author": "Logan McAnsh <logan@mcan.sh> (https://mcan.sh)",
   "dependencies": {
-    "babel-plugin-react-intl": "3.0.1",
-    "babel-plugin-styled-components": "1.8.0",
     "glob": "7.1.3",
     "hoist-non-react-statics": "3.0.1",
     "next": "7.0.2",
@@ -27,6 +27,8 @@
   "devDependencies": {
     "@babel/preset-flow": "7.0.0",
     "babel-eslint": "10.0.1",
+    "babel-plugin-react-intl": "3.0.1",
+    "babel-plugin-styled-components": "1.8.0",
     "eslint": "5.8.0",
     "eslint-config-airbnb": "17.1.0",
     "eslint-config-mcansh": "1.0.7",
