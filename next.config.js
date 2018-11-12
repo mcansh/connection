@@ -13,29 +13,27 @@ module.exports = {
     await copyFile(join(dir, '.next', 'sw.js'), join(outDir, 'sw.js'));
     return defaultPathMap;
   },
-  webpack: (config, { dev }) => {
-    if (!dev) {
-      config.plugins.push(
-        new SWPrecacheWebpackPlugin({
-          cacheId: name,
-          filename: 'sw.js',
-          minify: true,
-          forceDelete: true,
-          staticFileGlobs: ['static/**/*'],
-          staticFileGlobsIgnorePatterns: [/\.next\//],
-          runtimeCaching: [
-            {
-              handler: 'fastest',
-              urlPattern: /[.](webp|png|jpg)/,
-            },
-            {
-              handler: 'networkFirst',
-              urlPattern: /^http.*/,
-            },
-          ],
-        })
-      );
-    }
+  webpack: config => {
+    config.plugins.push(
+      new SWPrecacheWebpackPlugin({
+        cacheId: name,
+        filename: 'sw.js',
+        minify: true,
+        forceDelete: true,
+        staticFileGlobs: ['static/**/*'],
+        staticFileGlobsIgnorePatterns: [/\.next\//],
+        runtimeCaching: [
+          {
+            handler: 'fastest',
+            urlPattern: /[.](webp|png|jpg)/,
+          },
+          {
+            handler: 'networkFirst',
+            urlPattern: /^http.*/,
+          },
+        ],
+      })
+    );
     return config;
   },
 };
