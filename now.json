@@ -1,5 +1,25 @@
 {
   "name": "connection",
   "alias": "connection.loganmcansh.com",
-  "type": "static"
+  "version": 2,
+  "builds": [
+    {
+      "src": "**",
+      "use": "@now/static"
+    }
+  ],
+  "static": {
+    "directoryListing": false,
+    "headers": [
+      {
+        "source": "**/static/**",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
+      }
+    ]
+  }
 }
