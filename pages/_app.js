@@ -1,17 +1,6 @@
 import React from 'react';
 import App, { Container } from 'next/app';
-import { IntlProvider, addLocaleData } from 'react-intl';
-
 import Page from '../components/Page';
-
-// Register React Intl's locale data for the user's locale in the browser. This
-// locale data was added to the page by `pages/_document.js`. This only happens
-// once, on initial page load in the browser.
-if (typeof window !== 'undefined' && window.ReactIntlLocaleData) {
-  Object.keys(window.ReactIntlLocaleData).forEach(lang => {
-    addLocaleData(window.ReactIntlLocaleData[lang]);
-  });
-}
 
 class MyApp extends App {
   // $FlowFixMe
@@ -22,12 +11,7 @@ class MyApp extends App {
       pageProps = await Component.getInitialProps(ctx);
     }
 
-    // Get the `locale` and `messages` from the request object on the server.
-    // In the browser, use the same values that the server serialized.
-    const { req } = ctx;
-    const { locale, messages } = req || window.__NEXT_DATA__.props;
-
-    return { pageProps, locale, messages };
+    return { pageProps };
   };
 
   componentDidMount = () => {
@@ -47,21 +31,13 @@ class MyApp extends App {
   };
 
   render() {
-    const { Component, pageProps, locale, messages } = this.props;
-    const now = Date.now();
+    const { Component, pageProps } = this.props;
 
     return (
       <Container>
-        <IntlProvider
-          locale={locale}
-          messages={messages}
-          initialNow={now}
-          textComponent={React.Fragment}
-        >
-          <Page>
-            <Component {...pageProps} />
-          </Page>
-        </IntlProvider>
+        <Page>
+          <Component {...pageProps} />
+        </Page>
       </Container>
     );
   }

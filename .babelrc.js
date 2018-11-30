@@ -2,16 +2,13 @@ module.exports = {
   presets: ['next/babel', '@babel/preset-flow'],
   env: {
     development: {
-      plugins: ['styled-components', 'react-intl'],
+      plugins: ['styled-components'],
     },
     production: {
-      plugins: [
-        'styled-components',
-        ['react-intl', { messagesDir: 'lang/.messages' }],
-      ],
+      plugins: ['styled-components'],
     },
     test: {
-      plugins: ['styled-components', 'react-intl', 'transform-dynamic-import'],
+      plugins: ['styled-components', 'transform-dynamic-import'],
     },
   },
 };

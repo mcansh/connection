@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import Link from 'next/link';
-import { FormattedMessage } from 'react-intl';
 import { H1, StyledLink } from './Type';
 
 const effectiveTypes = [
@@ -18,23 +17,9 @@ type Props = {
 const ConnectionType = ({ connection }: Props) => {
   switch (connection) {
     case 'unknown':
-      return (
-        <H1>
-          <FormattedMessage
-            id="connectionType.unknown"
-            defaultMessage="I have no idea how you're online"
-          />
-        </H1>
-      );
+      return <H1>I have no idea how {"you're"} online</H1>;
     case 'offline':
-      return (
-        <H1>
-          <FormattedMessage
-            id="connectionType.offline"
-            defaultMessage="You are not connected to the internet"
-          />
-        </H1>
-      );
+      return <H1>You are not connected to the internet</H1>;
     case 'slow-2g':
     case '2g':
     case '3g':
@@ -42,26 +27,16 @@ const ConnectionType = ({ connection }: Props) => {
       const type = effectiveTypes.find(efftype => efftype.type === connection);
       return (
         <H1>
-          <FormattedMessage
-            id="connectionType.normal"
-            defaultMessage="According to {link}, you are connected via {connection}"
-            values={{
-              connection: type ? type.name : 'magic',
-              link: (
-                <Link
-                  href="https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation"
-                  passHref
-                >
-                  <StyledLink target="_blank" rel="noopener external nofollow">
-                    <FormattedMessage
-                      id="browser"
-                      defaultMessage="your browser"
-                    />
-                  </StyledLink>
-                </Link>
-              ),
-            }}
-          />
+          According to{' '}
+          <Link
+            href="https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation"
+            passHref
+          >
+            <StyledLink target="_blank" rel="noopener external nofollow">
+              your browser
+            </StyledLink>
+          </Link>
+          , you are connected via {type ? type.name : 'magic'}
         </H1>
       );
     }
