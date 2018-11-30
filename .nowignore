@@ -1,3 +1,4 @@
+__tests__
 flow-typed
 .eslintignore
 .eslintrc.js
@@ -5,8 +6,8 @@ flow-typed
 .gitignore
 .travis.yml
 .yarnrc
-Dockerfile
-license.markdown
+jest*
 readme.markdown
 .next
 node_modules
+yarn.lock
