@@ -6602,10 +6602,10 @@ react-is@^16.6.0:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.6.3.tgz#d2d7462fcfcbe6ec0da56ad69047e47e56e7eac0"
   integrity sha512-u7FDWtthB4rWibG/+mFbVd5FvdI20yde86qKGx4lVUTWmPlSWQ4QxbBIrrs+HnXGbxOUlUzTAP/VDmvCwaP2yA==
 
-react-testing-library@^5.4.1:
-  version "5.4.1"
-  resolved "https://registry.npmjs.org/react-testing-library/-/react-testing-library-5.4.1.tgz#8a0757f84bf9c5111cece4e6672a486e499e3221"
-  integrity sha512-c89iIEc52A5PRKroNs7Fudx3A/eiYG2bq/1vvSi+OFnvNeIDpo726TmqwdKE2dqzGtXohl1tajcoykex/UnTAQ==
+react-testing-library@^5.5.0:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/react-testing-library/-/react-testing-library-5.5.0.tgz#757c8cf46b54bf7b626f0a39e85900820efcd3b1"
+  integrity sha512-58X5frBnjcgTckZUcp9+1D1P/uunIuceIfzne8/p0rGn/vhIodFEKGpkaOAEHE2k+t5cXFJ0fufjlc/ukblIOw==
   dependencies:
     dom-testing-library "^3.13.1"
 
