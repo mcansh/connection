@@ -1,6 +1,6 @@
 /* eslint-env jest */
 import React from 'react';
-import { cleanup, render } from 'react-testing-library';
+import { cleanup, render } from '@testing-library/react';
 import Index from '../pages/index';
 
 afterEach(cleanup);
