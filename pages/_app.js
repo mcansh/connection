@@ -3,17 +3,6 @@ import App, { Container } from 'next/app';
 import Page from '../components/Page';
 
 class MyApp extends App {
-  // $FlowFixMe
-  static getInitialProps = async ({ Component, ctx }) => {
-    let pageProps = {};
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    return { pageProps };
-  };
-
   componentDidMount = () => {
     if (process.env.NODE_ENV === 'production') {
       if ('serviceWorker' in navigator) {
