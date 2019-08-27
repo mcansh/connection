@@ -45,12 +45,5 @@
     "jest": "24.8.0",
     "prettier": "^1.18.2",
     "prettier-eslint": "9.0.0"
-  },
-  "greenkeeper": {
-    "prTitles": {
-      "initialSubgroupPR": "chore(deps): bump deps in ${group} to latest",
-      "basicPR": "chore(deps): bump deps to the latest",
-      "groupPR": "chore(deps): bump deps in group ${group} to the latest"
-    }
   }
 }
