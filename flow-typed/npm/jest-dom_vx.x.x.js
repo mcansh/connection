@@ -175,7 +175,9 @@ declare module 'jest-dom/dist/__tests__/helpers/document.js' {
   declare module.exports: $Exports<'jest-dom/dist/__tests__/helpers/document'>;
 }
 declare module 'jest-dom/dist/__tests__/helpers/test-utils.js' {
-  declare module.exports: $Exports<'jest-dom/dist/__tests__/helpers/test-utils'>;
+  declare module.exports: $Exports<
+    'jest-dom/dist/__tests__/helpers/test-utils'
+  >;
 }
 declare module 'jest-dom/dist/__tests__/to-be-disabled.js' {
   declare module.exports: $Exports<'jest-dom/dist/__tests__/to-be-disabled'>;
@@ -184,7 +186,9 @@ declare module 'jest-dom/dist/__tests__/to-be-empty.js' {
   declare module.exports: $Exports<'jest-dom/dist/__tests__/to-be-empty'>;
 }
 declare module 'jest-dom/dist/__tests__/to-be-in-the-document.js' {
-  declare module.exports: $Exports<'jest-dom/dist/__tests__/to-be-in-the-document'>;
+  declare module.exports: $Exports<
+    'jest-dom/dist/__tests__/to-be-in-the-document'
+  >;
 }
 declare module 'jest-dom/dist/__tests__/to-be-in-the-dom.js' {
   declare module.exports: $Exports<'jest-dom/dist/__tests__/to-be-in-the-dom'>;
@@ -199,7 +203,9 @@ declare module 'jest-dom/dist/__tests__/to-be-visible.js' {
   declare module.exports: $Exports<'jest-dom/dist/__tests__/to-be-visible'>;
 }
 declare module 'jest-dom/dist/__tests__/to-contain-element.js' {
-  declare module.exports: $Exports<'jest-dom/dist/__tests__/to-contain-element'>;
+  declare module.exports: $Exports<
+    'jest-dom/dist/__tests__/to-contain-element'
+  >;
 }
 declare module 'jest-dom/dist/__tests__/to-contain-html.js' {
   declare module.exports: $Exports<'jest-dom/dist/__tests__/to-contain-html'>;
@@ -214,13 +220,17 @@ declare module 'jest-dom/dist/__tests__/to-have-focus.js' {
   declare module.exports: $Exports<'jest-dom/dist/__tests__/to-have-focus'>;
 }
 declare module 'jest-dom/dist/__tests__/to-have-form-values.js' {
-  declare module.exports: $Exports<'jest-dom/dist/__tests__/to-have-form-values'>;
+  declare module.exports: $Exports<
+    'jest-dom/dist/__tests__/to-have-form-values'
+  >;
 }
 declare module 'jest-dom/dist/__tests__/to-have-style.js' {
   declare module.exports: $Exports<'jest-dom/dist/__tests__/to-have-style'>;
 }
 declare module 'jest-dom/dist/__tests__/to-have-text-content.js' {
-  declare module.exports: $Exports<'jest-dom/dist/__tests__/to-have-text-content'>;
+  declare module.exports: $Exports<
+    'jest-dom/dist/__tests__/to-have-text-content'
+  >;
 }
 declare module 'jest-dom/dist/__tests__/utils.js' {
   declare module.exports: $Exports<'jest-dom/dist/__tests__/utils'>;

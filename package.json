@@ -11,39 +11,65 @@
     "export": "next export -o dist",
     "now-build": "yarn build && yarn export",
     "deploy": "now && now alias",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint ./ --ext js,ts,tsx --fix",
+    "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)\"",
+    "validate": "npm-run-all --parallel lint format test"
   },
+  "prettier": "@mcansh/eslint-config/prettier.config",
   "dependencies": {
-    "next": "9.0.3",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "styled-components": "4.3.2",
+    "next": "9.1.3",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "styled-components": "4.4.1",
     "sw-precache-webpack-plugin": "0.11.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
+    "@babel/core": "^7.7.2",
     "@babel/preset-flow": "7.0.0",
-    "@testing-library/jest-dom": "4.0.0",
-    "@testing-library/react": "8.0.7",
+    "@mcansh/eslint-config": "2.3.1-canary.0",
+    "@testing-library/jest-dom": "4.2.4",
+    "@testing-library/react": "9.3.2",
     "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "10.0.2",
-    "babel-jest": "24.8.0",
+    "babel-eslint": "10.0.3",
+    "babel-jest": "24.9.0",
     "babel-plugin-styled-components": "1.10.6",
     "babel-plugin-transform-dynamic-import": "2.1.0",
-    "eslint": "^6.1.0",
-    "eslint-config-airbnb": "17.1.1",
-    "eslint-config-mcansh": "1.1.3",
-    "eslint-config-prettier": "6.0.0",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "18.0.1",
+    "eslint-config-kentcdodds": "14.6.1",
+    "eslint-config-prettier": "6.6.0",
     "eslint-plugin-import": "2.18.2",
     "eslint-plugin-jsx-a11y": "6.2.3",
-    "eslint-plugin-prettier": "3.1.0",
+    "eslint-plugin-prettier": "3.1.1",
     "eslint-plugin-promise": "4.2.1",
-    "eslint-plugin-react": "7.14.3",
+    "eslint-plugin-react": "7.16.0",
+    "eslint-plugin-you-dont-need-lodash-underscore": "6.8.0",
     "flow": "0.2.3",
-    "flow-bin": "0.104.0",
-    "flow-typed": "2.6.1",
-    "jest": "24.8.0",
-    "prettier": "^1.18.2",
+    "flow-bin": "0.112.0",
+    "flow-typed": "2.6.2",
+    "husky": "3.0.9",
+    "jest": "24.9.0",
+    "lint-staged": "9.4.3",
+    "npm-run-all": "4.1.5",
+    "prettier": "^1.19.1",
     "prettier-eslint": "9.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.+(js|jsx)": [
+      "eslint --fix",
+      "prettier --write",
+      "yarn test --bail --findRelatedTests",
+      "git add"
+    ],
+    "*.+(json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

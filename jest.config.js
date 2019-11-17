@@ -3,7 +3,6 @@ module.exports = {
   bail: true,
   setupFilesAfterEnv: [
     '@testing-library/jest-dom/extend-expect',
-    '@testing-library/react/cleanup-after-each',
     '<rootDir>/jest.setup.js',
   ],
   testPathIgnorePatterns: [

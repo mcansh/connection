@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['mcansh'],
+  extends: ['@mcansh/eslint-config'],
   rules: {
     'no-underscore-dangle': ['error', { allow: ['__NEXT_DATA__'] }],
     'import/no-extraneous-dependencies': [
